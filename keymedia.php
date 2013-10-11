@@ -3,8 +3,8 @@
 Plugin URI: http://keymedia.no
 Description: KeyMedia integration for Media Library
 Version: 0.1
-Author: Krzysztof Hasiński
-Author URI: http://espeo.pl
+Author: Keyteq
+Author URI: http://keyteq.no
 License: MIT
 */
 

@@ -48,3 +48,15 @@ function keymedia_admin_menu() {
 add_action( 'admin_init', array($configuration, 'register_settings') );
 add_action( 'admin_menu', 'keymedia_admin_menu' );
 
+// Media library tab
+
+function keymedia_upload_tab( $tabs ) {
+    $tabs['keymedia'] = _('Insert from KeyMedia');
+    return $tabs;
+}
+add_filter( 'media_upload_tabs', 'keymedia_upload_tab' );
+
+function keymedia_upload_tab_content() {
+    require('web/app/media-browser.php');
+}
+add_action('media_upload_keymedia','keymedia_upload_tab_content'); 

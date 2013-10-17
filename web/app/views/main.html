@@ -1,78 +1,21 @@
-
-<div class="media-frame-content" style="top:15px; left:0px;">
+<div class="media-frame-content" style="top:0px; left:0px;">
     <div class="attachments-browser">
-        <div class="media-toolbar"><div class="media-toolbar-secondary">
-                <select class="attachment-filters">
-                    <option value="all">All media items</option>
-                    <option value="uploaded">Uploaded to this post</option>
-                    <option value="image">Images</option>
-                    <option value="audio">Audio</option>
-                    <option value="video">Video</option>
-                </select>
-            </div>
-            <div class="media-toolbar-primary">
-                <input type="search" placeholder="Search" class="search">
-            </div>
-        </div>
-        <ul class="attachments ui-sortable ui-sortable-disabled" id="__attachments-view-122">
-            <li class="attachment save-ready">
-                <div class="attachment-preview type-image subtype-jpeg landscape">
+        
+        <ul class="attachments" style="padding-top:15px;">
+            <li class="attachment save-ready" ng-repeat="medium in media" ng-class="{selected: medium.selected, details: medium.details}">
+                <div class="attachment-preview type-image subtype-jpeg" style="width:120px; height:120px;" ng-click="select(medium)">
                     <div class="thumbnail">
                         <div class="centered">
-                            <img src="http://keymedia.wp.dev/wordpress/wp-content/uploads/2013/10/1384061_10151871638399190_355918051_n-300x225.jpg" draggable="false">
+                            <img style="width:120px; height:120px;" src="{{medium.url}}" />
                         </div>
                     </div>
-                    <a class="check" href="#" title="Deselect"><div class="media-modal-icon"></div></a>
-                </div>
-            </li>
-            <li class="attachment save-ready">
-                <div class="attachment-preview type-image subtype-jpeg portrait">
-                    <div class="thumbnail">
-                        <div class="centered">
-                            <img src="http://keymedia.wp.dev/wordpress/wp-content/uploads/2013/10/1382211_10151870594844190_737351552_n-254x300.jpg" draggable="false">
-                        </div>
-                    </div>
-                    <a class="check" href="#" title="Deselect"><div class="media-modal-icon"></div></a>
-                </div>
-            </li>
-            <li class="attachment save-ready details selected">
-                <div class="attachment-preview type-image subtype-jpeg portrait">
-                    <div class="thumbnail">
-                        <div class="centered">
-                            <img src="http://keymedia.wp.dev/wordpress/wp-content/uploads/2013/10/1185449_10151773166079190_2014642851_n-294x300.jpg" draggable="false">
-                        </div>
-                    </div>
-                    <a class="check" href="#" title="Deselect"><div class="media-modal-icon"></div></a>
-                </div>
-            </li>
-            <li class="attachment save-ready">
-                <div class="attachment-preview type-image subtype-jpeg portrait">
-                    <div class="thumbnail">
-                        <div class="centered">
-                            <img src="http://keymedia.wp.dev/wordpress/wp-content/uploads/2013/10/30460_405341784189_7306478_n-225x300.jpg" draggable="false">
-                        </div>
-                    </div>
-                    <a class="check" href="#" title="Deselect"><div class="media-modal-icon"></div></a>
+                    <a class="check" title="Deselect" ng-click="deselect(medium)"><div class="media-modal-icon"></div></a>
                 </div>
             </li>
         </ul>
+        
         <div class="media-sidebar">
-            <div class="media-uploader-status" style="display: none;">
-                <h3>Uploading</h3>
-                <a class="upload-dismiss-errors" href="#">Dismiss Errors</a>
-                <div class="media-progress-bar">
-                    <div></div>
-                </div>
-                <div class="upload-details">
-                    <span class="upload-count">
-                        <span class="upload-index"></span> / <span class="upload-total"></span>
-                    </span>
-                    <span class="upload-detail-separator">–</span>
-                    <span class="upload-filename"></span>
-                </div>
-                <div class="upload-errors"></div>
-            </div>
-            <div class="attachment-details save-ready">
+            <div class="attachment-details save-ready" ng-show="details">
                 <h3>
                     Attachment Details
                     <span class="settings-save-status">
@@ -82,94 +25,39 @@
                 </h3>
                 <div class="attachment-info">
                     <div class="thumbnail">
-                        <img src="http://keymedia.wp.dev/wordpress/wp-content/uploads/2013/10/1185449_10151773166079190_2014642851_n-294x300.jpg" draggable="false">
+                        <img src="{{details.url}}">
                     </div>
                     <div class="details">
-                        <div class="filename">1185449_10151773166079190_2014642851_n.jpg</div>
-                        <div class="uploaded">October 11, 2013</div>
-                        <div class="dimensions">915 × 932</div>
-                        <a class="edit-attachment" href="http://keymedia.wp.dev/wordpress/wp-admin/post.php?post=5&amp;action=edit&amp;image-editor" target="_blank">Edit Image</a>
-                        <a class="refresh-attachment" href="#">Refresh</a>
-                        <a class="delete-attachment" href="#">Delete Permanently</a>
+                        <div class="filename">{{details.filename}}</div>
+                        <div class="uploaded">{{details.createDate}}</div>
+                        <div class="dimensions">{{details.width}} × {{details.height}}</div>
                         <div class="compat-meta">
                         </div>
                     </div>
                 </div>
                 <label class="setting" data-setting="title">
                     <span>Title</span>
-                    <input type="text" value="1185449_10151773166079190_2014642851_n">
+                    <input type="text" value="{{details.title}}">
                 </label>
-                <label class="setting" data-setting="caption">
-                    <span>Caption</span>
-                    <textarea></textarea>
-                </label>
-
-                <label class="setting" data-setting="alt">
-                    <span>Alt Text</span>
-                    <input type="text" value="">
-                </label>
-
-                <label class="setting" data-setting="description">
-                    <span>Description</span>
-                    <textarea></textarea>
-                </label>
-            </div><form class="compat-item"></form><div class="attachment-display-settings">
+            </div>
+            <form class="compat-item"></form><div class="attachment-display-settings" ng-show="false">
                 <h3>Attachment Display Settings</h3>
                 <label class="setting">
                     <span>Alignment</span>
-                    <select class="alignment" data-setting="align" data-user-setting="align">
+                    <select class="alignment">
 
                         <option value="left">
-                            Left					</option>
+                            Left
+                        </option>
                         <option value="center">
-                            Center					</option>
+                            Center
+                        </option>
                         <option value="right">
-                            Right					</option>
+                            Right
+                        </option>
                         <option value="none" selected="">
-                            None					</option>
-                    </select>
-                </label>
-                <div class="setting">
-                    <label>
-                        <span>Link To</span>
-                        <select class="link-to" data-setting="link" data-user-setting="urlbutton">
-                            <option value="file" selected="">
-                                Media File					
-                            </option>
-                            <option value="post">
-                                Attachment Page					
-                            </option>
-                            <option value="custom">
-                                Custom URL
-                            </option>
-                            <option value="none">
-                                None
-                            </option>
-                        </select>
-                    </label>
-                    <input type="text" class="link-to-custom" data-setting="linkUrl" readonly="" style="display: inline-block;">
-                </div>
-
-
-                <label class="setting">
-                    <span>Size</span>
-                    <select class="size" name="size" data-setting="size" data-user-setting="imgsize">
-
-                        <option value="thumbnail">
-                            Thumbnail – 150 × 150
+                            None
                         </option>
-
-
-                        <option value="medium">
-                            Medium – 294 × 300
-                        </option>
-
-
-
-                        <option value="full" selected="selected">
-                            Full Size – 915 × 932
-                        </option>
-
                     </select>
                 </label>
 
@@ -180,18 +68,19 @@
 <div class="media-frame-toolbar" style="left:0px;">
     <div class="media-toolbar">
         <div class="media-toolbar-secondary">
-            <div class="media-selection one">
+            <div class="media-selection one" ng-show="mediaFiltered.length != 0">
                 <div class="selection-info">
-                    <span class="count">1 selected</span>
-                    <a class="edit-selection" href="#">Edit</a>
-                    <a class="clear-selection" href="#">Clear</a>
+                    <span class="count">{{mediaFiltered.length}} selected</span>
+                    <a class="clear-selection" ng-click="deselectAll()" >Clear</a>
                 </div>
-                <div class="selection-view"><ul class="attachments ui-sortable" id="__attachments-view-112">
-                        <li class="attachment selection details selected save-ready">
-                            <div class="attachment-preview type-image subtype-jpeg portrait">
-                                <div class="thumbnail">
+                <div class="selection-view">
+                    <ul class="attachments ui-sortable">
+                        <li class="attachment selection selected save-ready" ng-class="{details:medium.details}" style="width:40px; height:40px;"
+                            ng-repeat="medium in mediaFiltered = (media | filter:{'selected':true})">
+                            <div class="attachment-preview type-image subtype-jpeg" style="width:40px; height:40px;">
+                                <div class="thumbnail" style="width:40px; height:40px;">
                                     <div class="centered">
-                                        <img src="http://keymedia.wp.dev/wordpress/wp-content/uploads/2013/10/1185449_10151773166079190_2014642851_n-294x300.jpg" draggable="false">
+                                        <img style="width:40px; height:40px;" src="{{medium.url}}">
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +90,10 @@
             </div>
         </div>
         <div class="media-toolbar-primary">
-            <a href="#" class="button media-button button-primary button-large media-button-insert">Insert into post</a>
+            <button class="button media-button button-primary button-large media-button-insert" 
+               ng-click="attach()"
+               ng-disabled="!mediaFiltered.length"
+               ">Insert into post</button>
         </div>
     </div>
 </div>

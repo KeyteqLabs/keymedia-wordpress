@@ -28,10 +28,13 @@ $mediaExt = array();
 foreach ($media as $mediumDir) {
     if (is_array($mediumDir)) {
         foreach ($mediumDir as $medium) {
+            $url = strpos($medium['host'], 'http://') === 0 ? $medium['host'] :
+                'http://'.$medium['host'];
+            $url .= $medium['shareUrl'];
             $mediaExt[] = array(
                 // Lots of metadata is missing here, API should handle this part
                 'name' => $medium['name'],
-                'url' => 'http://' . $medium['host'] . $medium['shareUrl']
+                'url' => $url
             );
         }
     }

@@ -28,7 +28,7 @@ class KeyMediaConfiguration {
     }
     
     public function render_access() {
-        echo '<p>'.__('Your KeyMedia installation host and access token').'</p>';
+        echo '<p>'.__('Your KeyMedia installation host, username and access token').'</p>';
     }
     
     public function render_host_field() {
@@ -69,6 +69,7 @@ function keymedia_upload_tab_content() {
 }
 add_action('media_upload_keymedia','keymedia_upload_tab_content'); 
 
+// RESTful endpoint for the front-end app
 if(isset($_GET['rest'])) {
     require 'process_request.php';
 }

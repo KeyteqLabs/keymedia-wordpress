@@ -1,16 +1,5 @@
 <?php
 
-// This file is supposed to be a thin wrapper for API methods
-// Unfortunately only one of those methods exist, hence the cruft.
-
-// WordPress doesn't support PSR-0, so we need an autoloader
-function autoload($className) {
-    $className = str_replace('\\', '/', $className);
-    include ('vendor/KeyteqLabs/keymedia-php/src/' . $className . '.php');
-}
-
-spl_autoload_register('autoload');
-
 // Initializing API
 use Keyteq\Keymedia\API;
 $options = get_option('keymedia_settings');

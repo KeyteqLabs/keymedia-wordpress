@@ -9,7 +9,8 @@ angular.module('keymediaApp')
       $scope.media = [];
       
       $http.get('media-upload.php?&tab=keymedia&rest').success(function(data){
-          $scope.media = data;
+          $scope.media = data.media;
+          $scope.total = data.total;
       });
       
       $scope.deselect = function(medium) {

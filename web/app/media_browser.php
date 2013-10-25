@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?php echo _('Insert from KeyMedia'); ?></title>
         <?php
-            
             wp_enqueue_style('wp-admin');
             wp_enqueue_style('ie');
             wp_enqueue_style('media');
@@ -20,11 +19,8 @@
 </head>
   <body ng-app="keymediaApp">
     <div class="container" ng-view=""></div>
-        <?php 
-            wp_enqueue_script('keymedia-angular', plugins_url('bower_components/angular/angular.js', __FILE__));
-            wp_enqueue_script('keymedia-app', plugins_url('scripts/app.js', __FILE__));
-            wp_enqueue_script('keymedia-main-ctrl', plugins_url('scripts/controllers/main.js', __FILE__));
-            wp_print_scripts();
-        ?>
+	<script src="<?php echo plugins_url('bower_components/angular/angular.js', __FILE__);?>"></script>
+	<script src="<?php echo plugins_url('scripts/app.js', __FILE__);?>"></script>
+	<script src="<?php echo plugins_url('scripts/controllers/main.js', __FILE__);?>"></script>
 </body>
 </html>

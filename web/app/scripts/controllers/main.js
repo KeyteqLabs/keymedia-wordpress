@@ -8,9 +8,13 @@ angular.module('keymediaApp')
       
       $scope.media = [];
       
-      $http.get('media-upload.php?&tab=keymedia&rest').success(function(data){
+      $http.get('media-upload.php?tab=keymedia&rest=list_media').success(function(data){
           $scope.media = data.media;
           $scope.total = data.total;
+      });
+      
+      $http.get('media-upload.php?tab=keymedia&rest=list_albums').success(function(data){
+	  $scope.albums = data;
       });
       
       $scope.deselect = function(medium) {

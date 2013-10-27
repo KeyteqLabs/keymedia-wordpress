@@ -2,6 +2,7 @@
 
 // Initializing API
 use Keyteq\Keymedia\KeymediaClient;
+
 $options = get_option('keymedia_settings');
 $apiUser = $options['keymedia_username'];
 $apiKey  = $options['keymedia_token'];
@@ -9,12 +10,19 @@ $apiHost = preg_replace('#^https?://#', '', $options['keymedia_host']);
 
 $client = new KeymediaClient($apiUser, $apiKey, $apiHost);
 
-switch($_GET['rest']) {
-  case 'list_media':  $response = $client->findMedia('a'); break;
-  case 'list_albums': $response = $client->listAlbums(); break;
-  case 'get_details': $response = $client->listMedia(); break;
-}
-// Until there is in API another way to get media we have to rewrite them this way
-echo json_encode($response);
+$search = isset($_GET['search']) ? $_GET['search'] : '.';
+$album  = isset($_GET['album'])  ? $_GET['album'] : null;
 
+switch($_GET['rest']) {
+  case 'list_media':  
+    if($album) { // TODO: Have one method for this. Ask Kuba to pull it together with this API.
+      $response = $client->getAlbum($album, $search);
+    } else {
+      $response = $client->findMedia($search); // FIXME: Why was the find all method removed?
+    }
+    break;
+  case 'list_albums': $response = $client->listAlbums(); break;
+}
+
+echo json_encode($response);
 exit();

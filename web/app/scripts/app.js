@@ -3,7 +3,7 @@
 angular.module('keymediaApp', [])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/:album', {
         templateUrl: '/wp-content/plugins/keymedia/web/app/views/main.html',
         controller: 'MainCtrl'
       })

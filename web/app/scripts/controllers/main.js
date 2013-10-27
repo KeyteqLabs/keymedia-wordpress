@@ -1,14 +1,21 @@
 'use strict';
 
 angular.module('keymediaApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http, $routeParams, $location) {
       
       $scope.details = null;
       $scope.mediaFiltered = 0;
-      
       $scope.media = [];
       
-      $http.get('media-upload.php?tab=keymedia&rest=list_media').success(function(data){
+      var album = $routeParams.album;
+      
+      var mediaUrl = 'media-upload.php?tab=keymedia&rest=list_media';
+      
+      if(album != '') {
+        mediaUrl += '&album=' + album
+      }
+      
+      $http.get(mediaUrl).success(function(data){
           $scope.media = data.media;
           $scope.totalMedia = data.total;
       });
@@ -49,7 +56,12 @@ angular.module('keymediaApp')
       
       $scope.attach = function() {
         var win = window.dialogArguments || opener || parent || top;
-        var imgSrc = $scope.details.url;
+        var imgSrc = $scope.details.file.url;
         win.send_to_editor('<img src="' + imgSrc + '" />');
+      };
+      
+      $scope.goToAlbum = function(album) {
+        $location.path(album);
+	return false;
       };
   });

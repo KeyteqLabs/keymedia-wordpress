@@ -7,6 +7,7 @@ angular.module('keymediaApp')
       $scope.mediaFiltered = 0;
       $scope.media = [];
       
+      
       var album = $routeParams.album;
       
       var mediaUrl = 'media-upload.php?tab=keymedia&rest=list_media';
@@ -14,6 +15,17 @@ angular.module('keymediaApp')
       if(album != '') {
         mediaUrl += '&album=' + album
       }
+      
+      $scope.$watch('search', function() {
+        var searchUrl = mediaUrl;
+        if($scope.search != '') {
+	  searchUrl = mediaUrl + '&search=' + $scope.search;
+	}
+        $http.get(searchUrl).success(function(data){
+            $scope.media = data.media;
+            $scope.totalMedia = data.total;
+        });
+      });
       
       $http.get(mediaUrl).success(function(data){
           $scope.media = data.media;

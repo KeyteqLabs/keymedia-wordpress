@@ -5,6 +5,9 @@
             <a ng-click="goToAlbum('/')" class="media-menu-item">All albums</a>
             <a ng-repeat="album in albums" ng-click="goToAlbum(album.tag)" class="media-menu-item">{{album.tag}}</a>
         </div>
+        <div>
+	  <input type="text" placeholder="search&hellip;" ng-model="search" />
+        </div>
         <ul class="attachments" style="padding-top:15px;">
             <li class="attachment save-ready" ng-repeat="medium in media" ng-class="{selected: medium.selected, details: medium.details}">
                 <div class="attachment-preview type-image subtype-jpeg" style="width:120px; height:120px;" ng-click="select(medium)">

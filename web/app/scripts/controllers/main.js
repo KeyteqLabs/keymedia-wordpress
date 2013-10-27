@@ -10,11 +10,12 @@ angular.module('keymediaApp')
       
       $http.get('media-upload.php?tab=keymedia&rest=list_media').success(function(data){
           $scope.media = data.media;
-          $scope.total = data.total;
+          $scope.totalMedia = data.total;
       });
       
       $http.get('media-upload.php?tab=keymedia&rest=list_albums').success(function(data){
-	  $scope.albums = data;
+	  $scope.albums = data.tags;
+	  $scope.totalAlbums = data.total;
       });
       
       $scope.deselect = function(medium) {

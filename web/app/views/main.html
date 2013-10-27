@@ -1,6 +1,10 @@
 <div class="media-frame-content" style="top:0px; left:0px;">
     <div class="attachments-browser">
-        
+      
+        <div class="media-router">
+            <a href="#" class="media-menu-item">All albums</a>
+            <a ng-repeat="album in albums" href="#" class="media-menu-item">{{album.tag}}</a>
+        </div>
         <ul class="attachments" style="padding-top:15px;">
             <li class="attachment save-ready" ng-repeat="medium in media" ng-class="{selected: medium.selected, details: medium.details}">
                 <div class="attachment-preview type-image subtype-jpeg" style="width:120px; height:120px;" ng-click="select(medium)">
@@ -15,56 +19,27 @@
         </ul>
         
         <div class="media-sidebar">
-            <div class="attachment-details save-ready" ng-show="details">
+            <div class="attachment-details" ng-show="details">
                 <h3>
                     Attachment Details
-                    <span class="settings-save-status">
-                        <span class="spinner"></span>
-                        <span class="saved">Saved.</span>
-                    </span>
                 </h3>
                 <div class="attachment-info">
                     <div class="thumbnail">
-                        <img ng-src="{{medium.file.url}}">
+                        <img ng-src="{{details.file.url}}">
                     </div>
                     <div class="details">
-                        <div class="filename">{{details.filename}}</div>
-                        <div class="uploaded">{{details.createDate}}</div>
-                        <div class="dimensions">{{details.width}} × {{details.height}}</div>
-                        <div class="compat-meta">
-                        </div>
+                        <div class="filename">{{details.slug}}{{details.file.ending}}</div>
+                        <div class="uploaded">{{details.file.modified|date}}</div>
+                        <div class="type">{{details.file.type}}</div>
+                        <div class="dimensions" ng-show="details.isImage">{{details.file.width}} × {{details.file.height}}</div>
                     </div>
                 </div>
-                <label class="setting" data-setting="title">
-                    <span>Title</span>
-                    <input type="text" value="{{details.title}}">
-                </label>
-            </div>
-            <form class="compat-item"></form><div class="attachment-display-settings" ng-show="false">
-                <h3>Attachment Display Settings</h3>
-                <label class="setting">
-                    <span>Alignment</span>
-                    <select class="alignment">
-
-                        <option value="left">
-                            Left
-                        </option>
-                        <option value="center">
-                            Center
-                        </option>
-                        <option value="right">
-                            Right
-                        </option>
-                        <option value="none" selected="">
-                            None
-                        </option>
-                    </select>
-                </label>
-
             </div>
         </div>
+        
     </div>
 </div>
+
 <div class="media-frame-toolbar" style="left:0px;">
     <div class="media-toolbar">
         <div class="media-toolbar-secondary">
@@ -80,7 +55,7 @@
                             <div class="attachment-preview type-image subtype-jpeg" style="width:40px; height:40px;">
                                 <div class="thumbnail" style="width:40px; height:40px;">
                                     <div class="centered">
-                                        <img style="width:40px; height:40px;" ng-src="{{medium.url}}">
+                                        <img style="width:40px; height:40px;" ng-src="{{medium.file.url}}">
                                     </div>
                                 </div>
                             </div>

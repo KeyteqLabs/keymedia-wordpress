@@ -5,7 +5,7 @@ use Keyteq\Keymedia\KeymediaClient;
 $options = get_option('keymedia_settings');
 $apiUser = $options['keymedia_username'];
 $apiKey  = $options['keymedia_token'];
-$apiHost = $options['keymedia_host'];
+$apiHost = preg_replace('#^https?://#', '', $options['keymedia_host']);
 
 $client = new KeymediaClient($apiUser, $apiKey, $apiHost);
 

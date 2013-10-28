@@ -22,14 +22,12 @@ angular.module('keymediaApp')
 	  searchUrl = mediaUrl + '&search=' + $scope.search;
 	}
         $http.get(searchUrl).success(function(data){
-            $scope.media = data.media;
-            $scope.totalMedia = data.total;
+            $scope.media = data;
         });
       });
       
       $http.get(mediaUrl).success(function(data){
-          $scope.media = data.media;
-          $scope.totalMedia = data.total;
+          $scope.media = data;
       });
       
       $http.get('media-upload.php?tab=keymedia&rest=list_albums').success(function(data){

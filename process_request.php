@@ -6,23 +6,23 @@ use Keyteq\Keymedia\KeymediaClient;
 $options = get_option('keymedia_settings');
 $apiUser = $options['keymedia_username'];
 $apiKey  = $options['keymedia_token'];
-$apiHost = preg_replace('#^https?://#', '', $options['keymedia_host']);
+$apiHost = 'http://'.preg_replace('#^https?://#', '', $options['keymedia_host']);//FIXME
 
 $client = new KeymediaClient($apiUser, $apiKey, $apiHost);
 
-$search = isset($_GET['search']) ? $_GET['search'] : 'a';
-$album  = isset($_GET['album'])  ? $_GET['album'] : null;
+$search = isset($_GET['search']) ? $_GET['search'] : false;
+$album  = isset($_GET['album'])  ? $_GET['album'] : false;
+$out = array();
 
 switch($_GET['rest']) {
-  case 'list_media':  
-    if($album) { // TODO: Have one method for this. Ask Kuba to pull it together with this API.
-      $response = $client->getAlbum($album, $search);
-    } else {
-      $response = $client->findMedia($search); // FIXME: Why was the find all method removed?
+  case 'list_media': $response = $client->listMedia($album, $search);
+    foreach($response as $k => $item) {
+      $out[$k] = $item->toArray();
+      $out[$k]['thumbnailUrl'] = $item->getThumbnailUrl(150,150);
     }
     break;
   case 'list_albums': $response = $client->listAlbums(); break;
 }
 
-echo json_encode($response);
+echo json_encode($out);
 exit();

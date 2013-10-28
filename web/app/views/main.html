@@ -13,7 +13,7 @@
                 <div class="attachment-preview type-image subtype-jpeg" style="width:120px; height:120px;" ng-click="select(medium)">
                     <div class="thumbnail">
                         <div class="centered">
-                            <img style="width:120px; height:120px;" ng-src="{{medium.file.url}}" />
+                            <img style="width:120px; height:120px;" ng-src="{{medium.thumbnailUrl}}" />
                         </div>
                     </div>
                     <a class="check" title="Deselect" ng-click="deselect(medium)"><div class="media-modal-icon"></div></a>
@@ -28,10 +28,10 @@
                 </h3>
                 <div class="attachment-info">
                     <div class="thumbnail">
-                        <img ng-src="{{details.file.url}}">
+                        <img ng-src="{{details.thumbnailUrl}}">
                     </div>
                     <div class="details">
-                        <div class="filename">{{details.slug}}{{details.file.ending}}</div>
+                        <div class="filename">{{details.name}}</div>
                         <div class="uploaded">{{details.file.modified|date}}</div>
                         <div class="type">{{details.file.type}}</div>
                         <div class="dimensions" ng-show="details.isImage">{{details.file.width}} × {{details.file.height}}</div>
@@ -58,7 +58,7 @@
                             <div class="attachment-preview type-image subtype-jpeg" style="width:40px; height:40px;">
                                 <div class="thumbnail" style="width:40px; height:40px;">
                                     <div class="centered">
-                                        <img style="width:40px; height:40px;" ng-src="{{medium.file.url}}">
+                                        <img style="width:40px; height:40px;" ng-src="{{medium.thumbnailUrl}}">
                                     </div>
                                 </div>
                             </div>

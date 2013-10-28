@@ -11,7 +11,7 @@
 
 // Settings
 
-class KeyMediaConfiguration {
+class KeymediaConfiguration {
 
     private $options;
 
@@ -56,7 +56,7 @@ class KeyMediaConfiguration {
 
 }
 
-$configuration = new KeyMediaConfiguration();
+$configuration = new KeymediaConfiguration();
 
 function keymedia_render_settings() {
     require('views/settings.php');

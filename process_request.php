@@ -10,7 +10,7 @@ $apiHost = preg_replace('#^https?://#', '', $options['keymedia_host']);
 
 $client = new KeymediaClient($apiUser, $apiKey, $apiHost);
 
-$search = isset($_GET['search']) ? $_GET['search'] : '.';
+$search = isset($_GET['search']) ? $_GET['search'] : 'a';
 $album  = isset($_GET['album'])  ? $_GET['album'] : null;
 
 switch($_GET['rest']) {

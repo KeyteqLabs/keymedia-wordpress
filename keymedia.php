@@ -63,7 +63,7 @@ function keymedia_render_settings() {
 }
 
 function keymedia_admin_menu() {
-    add_options_page('KeyMedia settings', 'KeyMedia', 'administrator', 'KeyMediaSettings', 'keymedia_render_settings');
+    add_menu_page( 'KeyMedia settings', 'KeyMedia', 'administrator', 'KeyMediaSettings', 'keymedia_render_settings', null, 999); 
 }
 
 add_action('admin_init', array($configuration, 'register_settings'));

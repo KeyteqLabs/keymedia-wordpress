@@ -19,6 +19,7 @@ switch($_GET['rest']) {
     foreach($response as $k => $item) {
       $out[$k] = $item->toArray();
       $out[$k]['thumbnailUrl'] = $item->getThumbnailUrl(150,150);
+      $out[$k]['isImage'] = $item->isImage();
     }
     break;
   case 'list_albums': $response = $client->listAlbums(); break;

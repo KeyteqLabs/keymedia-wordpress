@@ -8,7 +8,13 @@
             "email": "krzysztof.hasinski@espeo.pl"
         }
     ],
-    "minimum-stability": "stable",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:KeyteqLabs/keymedia-php.git"
+        }
+    ],
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.0",
         "KeyteqLabs/keymedia-php": "*",
@@ -16,7 +22,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Keyteq\\": ["src/", "tests/"],
+            "Keyteq\\": "src/",
             "Requests": "library/"
         }
     }

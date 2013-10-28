@@ -84,15 +84,7 @@ add_action('media_upload_keymedia', 'keymedia_upload_tab_content');
 // RPC endpoint for the front-end app
 
 // WordPress doesn't support PSR-0, so we need an autoloader
-function keymedia_autoload($className) {
-    $className = str_replace('\\', '/', $className);
-    $file = __DIR__.'/vendor/KeyteqLabs/keymedia-php/src/' . $className . '.php';
-    if(file_exists($file)) {
-        require ($file);
-    }
-}
-
-spl_autoload_register('keymedia_autoload', false, true);
+require_once __DIR__.'/vendor/autoload.php';
 
 if (isset($_GET['rest'])) {
     require 'process_request.php';

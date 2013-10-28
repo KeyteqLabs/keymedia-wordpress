@@ -3,21 +3,60 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "78a5c2a21d39dece309127e0f9124a42",
+    "hash": "e9ab8621881d30a61f170b47c76529ed",
     "packages": [
         {
-            "name": "KeyteqLabs/keymedia-php",
-            "version": "0.0.1",
+            "name": "keyteqlabs/keymedia-php",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:KeyteqLabs/keymedia-php.git",
-                "reference": "master"
+                "url": "https://github.com/KeyteqLabs/keymedia-php.git",
+                "reference": "71f50d70df7e163152c5b355e7f5cf9b032a655e"
             },
-            "type": "library"
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KeyteqLabs/keymedia-php/zipball/71f50d70df7e163152c5b355e7f5cf9b032a655e",
+                "reference": "71f50d70df7e163152c5b355e7f5cf9b032a655e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.0",
+                "rmccue/requests": ">=1.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Keyteq\\": [
+                        "src/",
+                        "tests/"
+                    ],
+                    "Requests": "library/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Zienkiewicz",
+                    "email": "jakub.zienkiewicz@espeo.pl"
+                }
+            ],
+            "description": "Keymedia API wrapper in PHP",
+            "support": {
+                "source": "https://github.com/KeyteqLabs/keymedia-php/tree/master",
+                "issues": "https://github.com/KeyteqLabs/keymedia-php/issues"
+            },
+            "time": "2013-10-28 15:51:11"
         },
         {
             "name": "rmccue/requests",
-            "version": "v1.6.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rmccue/Requests.git",
@@ -71,7 +110,7 @@
     "aliases": [
 
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [
 
     ],

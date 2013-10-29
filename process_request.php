@@ -15,14 +15,20 @@ $album  = isset($_GET['album'])  ? $_GET['album'] : false;
 $out = array();
 
 switch($_GET['rest']) {
-  case 'list_media': $response = $client->listMedia($album, $search);
+  case 'list_media': 
+    $response = $client->listMedia($album, $search);
     foreach($response as $k => $item) {
       $out[$k] = $item->toArray();
       $out[$k]['thumbnailUrl'] = $item->getThumbnailUrl(150,150);
       $out[$k]['isImage'] = $item->isImage();
     }
     break;
-  case 'list_albums': $response = $client->listAlbums(); break;
+  case 'list_albums':
+    $response = $client->listAlbums(); 
+    foreach($response as $item) {
+        $out[] = $item->toArray();
+    }  
+    break;
 }
 
 echo json_encode($out);

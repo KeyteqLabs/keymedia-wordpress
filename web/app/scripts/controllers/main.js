@@ -18,7 +18,7 @@ angular.module('keymediaApp')
       
       $scope.$watch('search', function() {
         var searchUrl = mediaUrl;
-        if($scope.search != '') {
+        if($scope.search) {
 	  searchUrl = mediaUrl + '&search=' + $scope.search;
 	}
         $http.get(searchUrl).success(function(data){
@@ -26,13 +26,9 @@ angular.module('keymediaApp')
         });
       });
       
-      $http.get(mediaUrl).success(function(data){
-          $scope.media = data;
-      });
-      
       $http.get('media-upload.php?tab=keymedia&rest=list_albums').success(function(data){
-	  $scope.albums = data.tags;
-	  $scope.totalAlbums = data.total;
+	  $scope.albums = data;
+          console.log($scope.albums);
       });
       
       $scope.deselect = function(medium) {

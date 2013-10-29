@@ -6,6 +6,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style>
+    .album-counter {
+        color:#AAAAAA;
+        font-size: 12px;
+    }
+    </style>
     <title><?php echo _('Insert from KeyMedia'); ?></title>
         <?php
             wp_enqueue_style('wp-admin');

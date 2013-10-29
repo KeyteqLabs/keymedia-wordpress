@@ -2,8 +2,8 @@
     <div class="attachments-browser">
       
         <div class="media-router">
-            <a ng-click="goToAlbum('/')" class="media-menu-item">All albums</a>
-            <a ng-repeat="album in albums" ng-click="goToAlbum(album.tag)" class="media-menu-item">{{album.tag}}</a>
+            <a style="cursor:pointer" ng-click="goToAlbum('/')" class="media-menu-item">All albums</a>
+            <a style="cursor:pointer" ng-repeat="album in albums" ng-click="goToAlbum(album.tag)" class="media-menu-item">{{album.tag}} <span class="album-counter">({{album.count}})</span></a>
         </div>
         <div>
 	  <input type="text" placeholder="search&hellip;" ng-model="search" />

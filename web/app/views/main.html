@@ -49,16 +49,16 @@
             <div class="media-selection one" ng-show="mediaFiltered.length != 0">
                 <div class="selection-info">
                     <span class="count">{{mediaFiltered.length}} selected</span>
-                    <a class="clear-selection" ng-click="deselectAll()" >Clear</a>
+                    <a style="cursor:pointer" class="clear-selection" ng-click="deselectAll()" >Clear</a>
                 </div>
                 <div class="selection-view">
                     <ul class="attachments ui-sortable">
-                        <li class="attachment selection selected save-ready" ng-class="{details:medium.details}" style="width:40px; height:40px;"
+                        <li class="attachment selection selected save-ready" ng-class="{details:medium.details}" style="width:40px; height:40px;margin-top:3px;"
                             ng-repeat="medium in mediaFiltered = (media | filter:{'selected':true})">
                             <div class="attachment-preview type-image subtype-jpeg" style="width:40px; height:40px;">
                                 <div class="thumbnail" style="width:40px; height:40px;">
                                     <div class="centered">
-                                        <img style="width:40px; height:40px;" ng-src="{{medium.thumbnailUrl}}">
+                                        <img ng-src="{{medium.microthumbnailUrl}}">
                                     </div>
                                 </div>
                             </div>

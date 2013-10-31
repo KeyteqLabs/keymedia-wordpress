@@ -19,7 +19,8 @@ switch($_GET['rest']) {
     $response = $client->listMedia($album, $search);
     foreach($response as $k => $item) {
       $out[$k] = $item->toArray();
-      $out[$k]['thumbnailUrl'] = $item->getThumbnailUrl(150,150);
+      $out[$k]['thumbnailUrl'] = $item->getThumbnailUrl(150, 150);
+      $out[$k]['microthumbnailUrl'] = $item->getThumbnailUrl(40, 40);
       $out[$k]['isImage'] = $item->isImage();
     }
     break;

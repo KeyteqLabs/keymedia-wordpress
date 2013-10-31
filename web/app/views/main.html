@@ -10,7 +10,7 @@
         </div>
         <ul class="attachments" style="padding-top:15px;">
             <li class="attachment save-ready" ng-repeat="medium in media" ng-class="{selected: medium.selected, details: medium.details}">
-                <div class="attachment-preview type-image subtype-jpeg" style="width:120px; height:120px;" ng-click="select(medium)">
+                <div class="attachment-preview type-image subtype-jpeg" style="width:120px; height:120px;" ng-click="select(medium, $event)">
                     <div class="thumbnail">
                         <div class="centered">
                             <img style="width:120px; height:120px;" ng-src="{{medium.thumbnailUrl}}" />

@@ -27,7 +27,6 @@ angular.module('keymediaApp')
       
       $http.get('media-upload.php?tab=keymedia&rest=list_albums').success(function(data){
 	  $scope.albums = data;
-          console.log($scope.albums);
       });
       
       $scope.deselect = function(medium) {
@@ -48,14 +47,46 @@ angular.module('keymediaApp')
           return false;
       };
       
-      $scope.select = function(medium) {
-          angular.forEach($scope.media, function(v, k) {
-              v.details = false;
-              v.selected = false;
-          });
-          medium.details = true;
-          medium.selected = true;
-          $scope.details = medium;
+      // TODO: refactor me
+      $scope.select = function(medium, $event) {
+	  var shiftHold = $event.shiftKey;
+	  var ctrlHold = $event.ctrlKey;
+	  
+	  if(shiftHold) {
+	    var selectMode = false;
+	    angular.forEach($scope.media, function(v, k) {
+		if(v === medium || v.details) {
+		  selectMode = !selectMode;
+		}
+		v.details = false;
+		v.selected = v.selected || selectMode;
+	    });
+	    medium.details = true;
+	    medium.selected = true;
+	  }
+	  else if(ctrlHold) {
+	    angular.forEach($scope.media, function(v, k) {
+	      v.details = false;
+	    });
+	    medium.selected = !medium.selected;
+	    medium.details = medium.selected;
+	    if(medium.details) {
+	      $scope.details = medium;
+	    }
+	    else {
+	      $scope.details = null;
+	    }
+	    
+	  }
+	  else {
+	    angular.forEach($scope.media, function(v, k) {
+		v.details = false;
+		v.selected = false;
+	    });
+	    medium.details = true;
+	    medium.selected = true;
+	    $scope.details = medium;
+	  }
           return false;
       };
       
@@ -71,4 +102,7 @@ angular.module('keymediaApp')
         $location.path(album);
 	return false;
       };
+      
+      
+      
   });

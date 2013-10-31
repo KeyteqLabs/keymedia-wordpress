@@ -36,15 +36,15 @@ class KeymediaConfiguration {
     }
 
     public function render_host_field() {
-        echo "<input id='plugin_text_string' name='keymedia_settings[keymedia_host]' type='text' value='{$this->options['keymedia_host']}' />";
+        echo "<input id='keymedia_host' name='keymedia_settings[keymedia_host]' type='text' value='{$this->options['keymedia_host']}' />";
     }
 
     public function render_username_field() {
-        echo "<input id='plugin_text_string' name='keymedia_settings[keymedia_username]' type='text' value='{$this->options['keymedia_username']}' />";
+        echo "<input id='keymedia_username' name='keymedia_settings[keymedia_username]' type='text' value='{$this->options['keymedia_username']}' />";
     }
 
     public function render_token_field() {
-        echo "<input id='plugin_text_string' name='keymedia_settings[keymedia_token]' type='text' value='{$this->options['keymedia_token']}' />";
+        echo "<input id='keymedia_token' name='keymedia_settings[keymedia_token]' type='text' value='{$this->options['keymedia_token']}' />";
     }
 
     public function isEmpty() {

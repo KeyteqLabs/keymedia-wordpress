@@ -1,3 +1,17 @@
+<script>
+// Inside WordPress layout, can't use angular.
+jQuery(function(){
+    jQuery.get('somepage.cgi',
+        {
+            'username': jQuery('#keymedia_username').val(),
+            'host':     jQuery('#keymedia_host').val(),
+            'token':    jQuery('#keymedia_token').val()
+    }).done(function(data) {
+        console.log(data);
+    });
+});
+</script>
+
 <div class="wrap">
     <h2>
         <?php echo __('KeyMedia integration settings'); ?>

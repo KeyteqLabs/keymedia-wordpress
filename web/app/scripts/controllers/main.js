@@ -47,12 +47,17 @@ angular.module('keymediaApp')
           return false;
       };
       
+      $scope.setDetails = function(medium) {
+	  angular.forEach($scope.media, function(v, k) {
+	    v.details = false;
+	  });
+	  medium.details = true;
+	  $scope.details = medium;
+      };
+      
       // TODO: refactor me
       $scope.select = function(medium, $event) {
-	  var shiftHold = $event.shiftKey;
-	  var ctrlHold = $event.ctrlKey;
-	  
-	  if(shiftHold) {
+	  if($event.shiftKey) {
 	    var selectMode = false;
 	    angular.forEach($scope.media, function(v, k) {
 		if(v === medium || v.details) {
@@ -64,7 +69,7 @@ angular.module('keymediaApp')
 	    medium.details = true;
 	    medium.selected = true;
 	  }
-	  else if(ctrlHold) {
+	  else if($event.ctrlKey) {
 	    angular.forEach($scope.media, function(v, k) {
 	      v.details = false;
 	    });
@@ -93,9 +98,18 @@ angular.module('keymediaApp')
       $scope.attach = function() {
         var win = window.dialogArguments || opener || parent || top;
         var imgSrc = $scope.details.file.url;
-	if($scope.details.isImage) { 
-	      win.send_to_editor('<img src="' + imgSrc + '" />');
-	}
+	var html = '';
+	
+	angular.forEach($scope.media, function(v, k) {
+	    if(v.selected) { 
+	      if(v.isImage) { 
+		html += '<img src="' + v.file.url + '" />'
+	      } else {
+		html += '<a href="'+v.file.url+'"><img src="'+v.thumbnailUrl+'" /></a>'; 
+	      }
+	    }
+	});
+	win.send_to_editor(html);
       };
       
       $scope.goToAlbum = function(album) {

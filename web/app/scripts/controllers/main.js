@@ -7,7 +7,6 @@ angular.module('keymediaApp')
       $scope.mediaFiltered = 0;
       $scope.media = [];
       
-      
       var album = $routeParams.album;
       
       var mediaUrl = 'media-upload.php?tab=keymedia&rest=list_media';
@@ -63,7 +62,9 @@ angular.module('keymediaApp')
       $scope.attach = function() {
         var win = window.dialogArguments || opener || parent || top;
         var imgSrc = $scope.details.file.url;
-        win.send_to_editor('<img src="' + imgSrc + '" />');
+	if($scope.details.isImage) { 
+	      win.send_to_editor('<img src="' + imgSrc + '" />');
+	}
       };
       
       $scope.goToAlbum = function(album) {

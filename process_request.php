@@ -30,6 +30,10 @@ switch($_GET['rest']) {
         $out[] = $item->toArray();
     }  
     break;
+  case 'check_connection':
+    $client = new KeymediaClient($_GET['username'], $_GET['token'], $_GET['host']);
+    $out = $client->isConnected();
+    break;
 }
 
 echo json_encode($out);

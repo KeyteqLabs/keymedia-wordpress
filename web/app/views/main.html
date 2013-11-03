@@ -16,7 +16,7 @@
                             <img style="width:120px; height:120px;" ng-src="{{medium.thumbnailUrl}}" />
                         </div>
                     </div>
-                    <a class="check" title="Deselect" ng-click="deselect(medium)"><div class="media-modal-icon"></div></a>
+                    <a class="check" title="Deselect"><div ng-click="deselect(medium);$event.stopPropagation()" class="media-modal-icon"></div></a>
                 </div>
             </li>
         </ul>

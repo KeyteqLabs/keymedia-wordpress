@@ -6,9 +6,7 @@ use Keyteq\Keymedia\KeymediaClient;
 $options = get_option('keymedia_settings');
 $apiUser = $options['keymedia_username'];
 $apiKey  = $options['keymedia_token'];
-$apiHost = 'http://'.preg_replace('#^https?://#', '', $options['keymedia_host']);//FIXME
-
-$client = new KeymediaClient($apiUser, $apiKey, $apiHost);
+$apiHost = $options['keymedia_host'];
 
 $search = isset($_GET['search']) ? $_GET['search'] : false;
 $album  = isset($_GET['album'])  ? $_GET['album'] : false;
@@ -16,6 +14,7 @@ $out = array();
 
 switch($_GET['rest']) {
   case 'list_media': 
+$client = new KeymediaClient($apiUser, $apiKey, $apiHost);
     $response = $client->listMedia($album, $search);
     foreach($response as $k => $item) {
       $out[$k] = $item->toArray();
@@ -25,6 +24,7 @@ switch($_GET['rest']) {
     }
     break;
   case 'list_albums':
+    $client = new KeymediaClient($apiUser, $apiKey, $apiHost);
     $response = $client->listAlbums(); 
     foreach($response as $item) {
         $out[] = $item->toArray();

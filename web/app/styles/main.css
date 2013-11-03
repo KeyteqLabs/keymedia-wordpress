@@ -2,3 +2,11 @@
     color:#AAAAAA;
     font-size: 12px;
 }
+
+.attachments-browser {
+    padding-top:15px;
+}
+
+.attachments-browser a {
+    color: #21759b;
+}

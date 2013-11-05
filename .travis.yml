@@ -9,5 +9,4 @@ before_install:
 install:
    - make
 
-script: 
-
+script: true

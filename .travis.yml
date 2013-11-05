@@ -4,8 +4,8 @@ php:
    - 5.3
    - 5.4
    - 5.5
-before_script:
-   - npm install bower
+before_install:
+   - npm install -g bower
 install:
    - make
 

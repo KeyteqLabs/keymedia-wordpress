@@ -2,7 +2,8 @@
     <div class="attachments-browser">
 
         <div class="media-router">
-            <a style="cursor:pointer" ng-click="goToAlbum('/')" class="media-menu-item">Upload</a>
+            <input style="display:none" id="keymedia_file_upload" type="file" ng-file-select="onFileSelect($files)" multiple>
+            <label for="keymedia_file_upload" style="cursor:pointer" class="media-menu-item">Upload</label>
             <a style="cursor:pointer" ng-click="goToAlbum('/')" class="media-menu-item">All albums</a>
             <a style="cursor:pointer" ng-repeat="album in albums" ng-click="goToAlbum(album.tag)" class="media-menu-item">{{album.tag}} <span class="album-counter">({{album.count}})</span></a>
         </div>

@@ -21,8 +21,9 @@
     </head>
     <body ng-app="keymediaApp">
         <div class="container" ng-view=""></div>
+        <script src="<?php echo plugins_url('bower_components/angularjs-file-upload/angular-file-upload-shim.min.js', __FILE__); ?>"></script>
         <script src="<?php echo plugins_url('bower_components/angular/angular.min.js', __FILE__); ?>"></script>
-        <script src="<?php echo plugins_url('bower_components/angular-file-upload/angular-file-upload.min.js', __FILE__); ?>"></script>
+        <script src="<?php echo plugins_url('bower_components/angularjs-file-upload/angular-file-upload.min.js', __FILE__); ?>"></script>
         <script src="<?php echo plugins_url('scripts/app.js', __FILE__); ?>"></script>
         <script src="<?php echo plugins_url('scripts/controllers/main.js', __FILE__); ?>"></script>
     </body>

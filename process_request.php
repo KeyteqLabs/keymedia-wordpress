@@ -30,6 +30,12 @@ switch ($_GET['rest']) {
             $out[] = $item->toArray();
         }
         break;
+    case 'upload':
+        $client = new KeymediaClient($apiUser, $apiKey, $apiHost);
+        $client->postMedia(
+                $_FILES['file']['tmp_name'], $_FILES['file']['name']
+        );
+        break;
     case 'check_connection':
         $client = new KeymediaClient($_GET['username'], $_GET['token'], $_GET['host']);
         $out = $client->isConnected();

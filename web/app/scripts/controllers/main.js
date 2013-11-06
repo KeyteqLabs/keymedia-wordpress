@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('keymediaApp')
-  .controller('MainCtrl', function ($scope, $http, $routeParams, $location) {
+  .controller('MainCtrl', function ($scope, $http, $route, $routeParams, $location, $upload) {
       
       $scope.details = null;
       $scope.mediaFiltered = 0;
@@ -117,6 +117,19 @@ angular.module('keymediaApp')
 	return false;
       };
       
-      
+    $scope.onFileSelect = function($files) {
+        for (var i = 0; i < $files.length; i++) {
+            var $file = $files[i];
+            $scope.upload = $upload.upload({
+                url: 'media-upload.php?tab=keymedia&rest=upload',
+                file: $file,
+                progress: function(evt) {
+                    // TODO
+                }
+            }).success(function(data, status, headers, config) {
+                $route.reload();
+            });
+        }
+    }
       
   });

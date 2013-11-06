@@ -11,8 +11,8 @@ angular.module('keymediaApp')
       
       var mediaUrl = 'media-upload.php?tab=keymedia&rest=list_media';
       
-      if(album != '') {
-        mediaUrl += '&album=' + album
+      if(album !== '') {
+        mediaUrl += '&album=' + album;
       }
       
       $scope.$watch('search', function() {

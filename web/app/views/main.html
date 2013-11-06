@@ -1,12 +1,13 @@
 <div class="media-frame-content" style="top:0px; left:0px;">
     <div class="attachments-browser">
-      
+
         <div class="media-router">
+            <a style="cursor:pointer" ng-click="goToAlbum('/')" class="media-menu-item">Upload</a>
             <a style="cursor:pointer" ng-click="goToAlbum('/')" class="media-menu-item">All albums</a>
             <a style="cursor:pointer" ng-repeat="album in albums" ng-click="goToAlbum(album.tag)" class="media-menu-item">{{album.tag}} <span class="album-counter">({{album.count}})</span></a>
         </div>
         <div>
-	  <input type="text" placeholder="search&hellip;" ng-model="search" />
+            <input type="text" placeholder="search&hellip;" ng-model="search" />
         </div>
         <ul class="attachments" style="padding-top:15px;">
             <li class="attachment save-ready" ng-repeat="medium in media" ng-class="{selected: medium.selected, details: medium.details}">
@@ -16,11 +17,12 @@
                             <img style="width:120px; height:120px;" ng-src="{{medium.thumbnailUrl}}" />
                         </div>
                     </div>
-                    <a class="check" title="Deselect"><div ng-click="deselect(medium);$event.stopPropagation()" class="media-modal-icon"></div></a>
+                    <a class="check" title="Deselect"><div ng-click="deselect(medium);
+                            $event.stopPropagation()" class="media-modal-icon"></div></a>
                 </div>
             </li>
         </ul>
-        
+
         <div class="media-sidebar">
             <div class="attachment-details" ng-show="details">
                 <h3>
@@ -39,7 +41,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>
 
@@ -54,7 +56,7 @@
                 <div class="selection-view">
                     <ul class="attachments ui-sortable">
                         <li class="attachment selection selected save-ready" ng-class="{details:medium.details}" style="width:40px; height:40px;margin-top:3px;"
-                            ng-repeat="medium in mediaFiltered = (media | filter:{'selected':true})" ng-click="setDetails(medium)">
+                            ng-repeat="medium in mediaFiltered = (media| filter:{'selected':true})" ng-click="setDetails(medium)">
                             <div class="attachment-preview type-image subtype-jpeg" style="width:40px; height:40px;">
                                 <div class="thumbnail" style="width:40px; height:40px;">
                                     <div class="centered">
@@ -69,9 +71,9 @@
         </div>
         <div class="media-toolbar-primary">
             <button class="button media-button button-primary button-large media-button-insert" 
-               ng-click="attach()"
-               ng-disabled="!mediaFiltered.length"
-               ">Insert into post</button>
+                    ng-click="attach()"
+                    ng-disabled="!mediaFiltered.length"
+                    ">Insert into post</button>
         </div>
     </div>
 </div>

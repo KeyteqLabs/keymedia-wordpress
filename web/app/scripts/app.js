@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('keymediaApp', [])
+angular.module('keymediaApp', ['angularFileUpload'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/:album', {

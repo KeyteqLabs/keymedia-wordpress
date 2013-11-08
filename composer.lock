@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KeyteqLabs/keymedia-php.git",
-                "reference": "efd2691fdb1d768da59af23cf9d8d2600436eccf"
+                "reference": "5700bb5b1d6ca4bf64438c14302bce77e31e01e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KeyteqLabs/keymedia-php/zipball/efd2691fdb1d768da59af23cf9d8d2600436eccf",
-                "reference": "efd2691fdb1d768da59af23cf9d8d2600436eccf",
+                "url": "https://api.github.com/repos/KeyteqLabs/keymedia-php/zipball/5700bb5b1d6ca4bf64438c14302bce77e31e01e5",
+                "reference": "5700bb5b1d6ca4bf64438c14302bce77e31e01e5",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
                 "source": "https://github.com/KeyteqLabs/keymedia-php/tree/master",
                 "issues": "https://github.com/KeyteqLabs/keymedia-php/issues"
             },
-            "time": "2013-11-04 14:11:14"
+            "time": "2013-11-05 14:45:38"
         },
         {
             "name": "rmccue/requests",

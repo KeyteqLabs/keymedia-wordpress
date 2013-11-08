@@ -25,15 +25,34 @@ class KeymediaConfiguration {
     }
 
     public function render_host_field() {
-        echo "<input id='keymedia_host' name='keymedia_settings[keymedia_host]' type='text' value='{$this->options['keymedia_host']}' />";
+        echo "<input "
+                . "ng-model='settings.host' "
+                . "required "
+                . "ng-initial "
+                . "id='keymedia_host' "
+                . "name='keymedia_settings[keymedia_host]' "
+                . "type='url' "
+                . "value='{$this->options['keymedia_host']}' />";
     }
 
     public function render_username_field() {
-        echo "<input id='keymedia_username' name='keymedia_settings[keymedia_username]' type='text' value='{$this->options['keymedia_username']}' />";
+        echo "<input "
+                . "ng-model='settings.username' "
+                . "required "
+                . "ng-initial "
+                . "id='keymedia_username' name='keymedia_settings[keymedia_username]' "
+                . "type='text' "
+                . "value='{$this->options['keymedia_username']}' />";
     }
 
     public function render_token_field() {
-        echo "<input id='keymedia_token' name='keymedia_settings[keymedia_token]' type='text' value='{$this->options['keymedia_token']}' />";
+        echo "<input "
+                . "ng-model='settings.token' "
+                . "required "
+                . "ng-initial "
+                . "id='keymedia_token' name='keymedia_settings[keymedia_token]' "
+                . "type='text' "
+                . "value='{$this->options['keymedia_token']}' />";
     }
 
     public function isEmpty() {

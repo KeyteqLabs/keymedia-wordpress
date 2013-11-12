@@ -19,12 +19,16 @@ angular.module('keymediaSettingsApp', [])
             $scope.connection = true;
             $scope.$watch('settings', function() {
                 $http.get('media-upload.php?tab=keymedia&rest=check_connection', {params: $scope.settings}).success(function(data) {
-                    $scope.connection = 'true'==data;
+                    $scope.connection = 'true'===data;
                 });
             }, true);
             $scope.getToken = function() {
                 $http.get('media-upload.php?tab=keymedia&rest=get_token', {params: $scope.settings}).success(function(data) {
-                    $scope.settings.token=data;
+                    $scope.settings.token = data;
                 });
+            };
+            $scope.removePassword = function() {
+                $scope.settings.password = '';
+                console.log('a');
             };
         });

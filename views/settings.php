@@ -6,13 +6,13 @@
         <p ng-hide="connection">
             <?php echo __('Cannot connect to KeyMedia. Check your credentials.'); ?>
         </p> 
-        <form name="keymedia_settings" method="post" action="options.php">
+        <form name="keymedia_settings" method="post" action="options.php" ng-submit="removePassword()">
             <p>
                 <?php settings_fields('keymedia_settings'); ?>
                 <?php do_settings_sections('keymedia_settings'); ?>
             </p>
             <p>
-                <input ng-disabled="!keymedia_settings.$valid || !connection" id="save_keymedia_options" class="button button-primary" type="button" name="Submit" value="<?php esc_attr_e('Save changes') ?>" />
+                <input ng-disabled="!keymedia_settings.$valid || !connection" id="save_keymedia_options" class="button button-primary" type="submit" name="Submit" value="<?php esc_attr_e('Save changes') ?>" />
             </p>
         </form>
     </div>

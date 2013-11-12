@@ -42,7 +42,7 @@ switch ($_GET['rest']) {
         break;
     case 'get_token':
         $client = new KeymediaClient($_GET['username'], $_GET['token'], $_GET['host']);
-        $out = $client->getToken($_GET['username'], $_GET['token']);
+        $out = $client->getToken($_GET['username'], $_GET['password']);
         break;
 }
 

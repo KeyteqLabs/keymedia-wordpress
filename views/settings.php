@@ -6,8 +6,7 @@
         <p ng-hide="connection">
             <?php echo __('Cannot connect to KeyMedia. Check your credentials.'); ?>
         </p> 
-        <form name="keymedia_settings" method="post" 
-              action="options.php">
+        <form name="keymedia_settings" method="post" action="options.php">
             <p>
                 <?php settings_fields('keymedia_settings'); ?>
                 <?php do_settings_sections('keymedia_settings'); ?>

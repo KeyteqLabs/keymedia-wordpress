@@ -13,7 +13,9 @@ class KeymediaConfiguration {
         add_settings_section('keymedia_access', 'KeyMedia access', array($this, 'render_access'), 'keymedia_settings');
         add_settings_field('keymedia_host', 'Host', array($this, 'render_host_field'), 'keymedia_settings', 'keymedia_access');
         add_settings_field('keymedia_username', 'Username', array($this, 'render_username_field'), 'keymedia_settings', 'keymedia_access');
+        add_settings_field('keymedia_password', 'Password', array($this, 'render_password_field'), 'keymedia_settings', 'keymedia_access');
         add_settings_field('keymedia_token', 'Token', array($this, 'render_token_field'), 'keymedia_settings', 'keymedia_access');
+
         $this->options = get_option('keymedia_settings');
         if (!$this->isEmpty()) {
             add_filter('media_upload_tabs', 'keymedia_upload_tab');
@@ -44,6 +46,10 @@ class KeymediaConfiguration {
                 . "type='text' "
                 . "value='{$this->options['keymedia_username']}' />";
     }
+    
+    public function render_password_field() {
+        echo '<input type="password" ng-model="settings.password" />';
+    }
 
     public function render_token_field() {
         echo "<input "
@@ -53,6 +59,7 @@ class KeymediaConfiguration {
                 . "id='keymedia_token' name='keymedia_settings[keymedia_token]' "
                 . "type='text' "
                 . "value='{$this->options['keymedia_token']}' />";
+        echo '<input type="button" ng-click="getToken()" value="Get token" />';
     }
 
     public function isEmpty() {

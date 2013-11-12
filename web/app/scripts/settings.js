@@ -22,4 +22,9 @@ angular.module('keymediaSettingsApp', [])
                     $scope.connection = 'true'==data;
                 });
             }, true);
+            $scope.getToken = function() {
+                $http.get('media-upload.php?tab=keymedia&rest=get_token', {params: $scope.settings}).success(function(data) {
+                    $scope.settings.token=data;
+                });
+            };
         });

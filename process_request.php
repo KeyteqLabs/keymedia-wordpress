@@ -40,6 +40,10 @@ switch ($_GET['rest']) {
         $client = new KeymediaClient($_GET['username'], $_GET['token'], $_GET['host']);
         $out = $client->isConnected();
         break;
+    case 'get_token':
+        $client = new KeymediaClient($_GET['username'], $_GET['token'], $_GET['host']);
+        $out = $client->getToken($_GET['username'], $_GET['token']);
+        break;
 }
 
 echo json_encode($out);

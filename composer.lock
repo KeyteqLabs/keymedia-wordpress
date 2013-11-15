@@ -11,20 +11,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KeyteqLabs/keymedia-php.git",
-                "reference": "5700bb5b1d6ca4bf64438c14302bce77e31e01e5"
+                "reference": "0b8fa5a9ca1de922b2595e7f4250ffe4e1402608"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KeyteqLabs/keymedia-php/zipball/5700bb5b1d6ca4bf64438c14302bce77e31e01e5",
-                "reference": "5700bb5b1d6ca4bf64438c14302bce77e31e01e5",
+                "url": "https://api.github.com/repos/KeyteqLabs/keymedia-php/zipball/0b8fa5a9ca1de922b2595e7f4250ffe4e1402608",
+                "reference": "0b8fa5a9ca1de922b2595e7f4250ffe4e1402608",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
-                "php": ">=5.3.0",
-                "rmccue/requests": ">=1.0"
+                "mashape/unirest-php": "dev-master",
+                "php": ">=5.3.0"
             },
             "require-dev": {
+                "mikey179/vfsstream": "dev-master",
                 "mockery/mockery": "dev-master",
                 "phpunit/phpunit": "3.7.*"
             },
@@ -35,7 +36,7 @@
                         "src/",
                         "tests/"
                     ],
-                    "Requests": "library/"
+                    "Unirest": "lib/"
                 }
             },
             "license": [
@@ -52,7 +53,56 @@
                 "source": "https://github.com/KeyteqLabs/keymedia-php/tree/master",
                 "issues": "https://github.com/KeyteqLabs/keymedia-php/issues"
             },
-            "time": "2013-11-05 14:45:38"
+            "time": "2013-11-14 10:46:16"
+        },
+        {
+            "name": "mashape/unirest-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mashape/unirest-php.git",
+                "reference": "45cb5902121f6f8dc5836f38095e43e14774aa90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mashape/unirest-php/zipball/45cb5902121f6f8dc5836f38095e43e14774aa90",
+                "reference": "45cb5902121f6f8dc5836f38095e43e14774aa90",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "vierbergenlars/simpletest": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Unirest": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mashape",
+                    "email": "support@mashape.com",
+                    "homepage": "http://mashape.com"
+                }
+            ],
+            "description": "Unirest PHP",
+            "homepage": "https://github.com/Mashape/unirest-php",
+            "keywords": [
+                "client",
+                "curl",
+                "http",
+                "rest"
+            ],
+            "time": "2013-11-02 03:04:35"
         },
         {
             "name": "rmccue/requests",

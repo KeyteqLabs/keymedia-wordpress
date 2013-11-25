@@ -24,8 +24,8 @@ angular.module('keymediaSettingsApp', [])
             }, true);
             $scope.getToken = function() {
                 $http.get('media-upload.php?tab=keymedia&rest=get_token', {params: $scope.settings}).success(function(data) {
-                    if(data) {
-                       $scope.settings.token = data;
+                    if(data && data != "false") {
+                       $scope.settings.token = JSON.parse(data);
                     }
                 });
             };

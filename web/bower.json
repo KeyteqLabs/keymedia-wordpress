@@ -5,7 +5,8 @@
     "angular": "~1.0.7",
     "json3": "~3.2.4",
     "es5-shim": "~2.0.8",
-    "angularjs-file-upload": "~1.1.2"
+    "angularjs-file-upload": "~1.1.2",
+    "picturefill": "~1.2.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",

@@ -41,8 +41,11 @@ switch ($_GET['rest']) {
         $out = $client->isConnected();
         break;
     case 'get_token':
-        $client = new KeymediaClient($_GET['username'], $_GET['host']);
-        $out = $client->getToken($_GET['password']);
+        $out = false;
+        if(isset($_GET['password'])) {
+            $client = new KeymediaClient($_GET['username'], $_GET['host']);
+            $out = $client->getToken($_GET['password']);
+        }
         break;
 }
 

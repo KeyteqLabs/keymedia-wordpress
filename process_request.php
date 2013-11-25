@@ -14,7 +14,7 @@ $out = array();
 
 switch ($_GET['rest']) {
     case 'list_media':
-        $client = new KeymediaClient($apiUser, $apiKey, $apiHost);
+        $client = new KeymediaClient($apiUser, $apiHost, $apiKey);
         $response = $client->listMedia($album, $search);
         foreach ($response as $k => $item) {
             $out[$k] = $item->toArray();
@@ -24,24 +24,24 @@ switch ($_GET['rest']) {
         }
         break;
     case 'list_albums':
-        $client = new KeymediaClient($apiUser, $apiKey, $apiHost);
+        $client = new KeymediaClient($apiUser, $apiHost, $apiKey);
         $response = $client->listAlbums();
         foreach ($response as $item) {
             $out[] = $item->toArray();
         }
         break;
     case 'upload':
-        $client = new KeymediaClient($apiUser, $apiKey, $apiHost);
+        $client = new KeymediaClient($apiUser, $apiHost, $apiKey);
         $client->postMedia(
                 $_FILES['file']['tmp_name'], $_FILES['file']['name']
         );
         break;
     case 'check_connection':
-        $client = new KeymediaClient($_GET['username'], $_GET['token'], $_GET['host']);
+        $client = new KeymediaClient($_GET['username'], $_GET['host'], $_GET['token']);
         $out = $client->isConnected();
         break;
     case 'get_token':
-        $client = new KeymediaClient($_GET['username'], $_GET['token'], $_GET['host']);
+        $client = new KeymediaClient($_GET['username'], $_GET['host']);
         $out = $client->getToken($_GET['password']);
         break;
 }

@@ -22,14 +22,15 @@ angular.module('keymediaSettingsApp', [])
                     $scope.connection = 'true'===data;
                 });
             }, true);
-            $scope.getToken = function() {
+            $scope.submit = function() {
                 $http.get('media-upload.php?tab=keymedia&rest=get_token', {params: $scope.settings}).success(function(data) {
                     if(data && data != "false") {
-                       $scope.settings.token = JSON.parse(data);
+                      $scope.settings.token = JSON.parse(data);
+                      $scope.settings.password = '';
+                      angular.element('#keymedia_settings').submit();
+                    } else {
+                      $scope.settings.token = 'invalid';
                     }
                 });
-            };
-            $scope.removePassword = function() {
-                $scope.settings.password = '';
             };
         });

@@ -1,5 +1,7 @@
 <?php
 
+use Keyteq\Keymedia\KeymediaClient;
+
 class KeymediaConfiguration {
 
     private $options;
@@ -14,10 +16,9 @@ class KeymediaConfiguration {
         add_settings_field('keymedia_host', 'Host', array($this, 'render_host_field'), 'keymedia_settings', 'keymedia_access');
         add_settings_field('keymedia_username', 'Username', array($this, 'render_username_field'), 'keymedia_settings', 'keymedia_access');
         add_settings_field('keymedia_password', 'Password', array($this, 'render_password_field'), 'keymedia_settings', 'keymedia_access');
-        add_settings_field('keymedia_token', 'Token', array($this, 'render_token_field'), 'keymedia_settings', 'keymedia_access');
 
         $this->options = get_option('keymedia_settings');
-        if (!$this->isEmpty()) {
+        if ($this->canConnect()) {
             add_filter('media_upload_tabs', 'keymedia_upload_tab');
         }
     }
@@ -49,24 +50,17 @@ class KeymediaConfiguration {
     
     public function render_password_field() {
         echo '<input type="password" ng-model="settings.password" />';
-    }
-
-    public function render_token_field() {
         echo "<input "
-                . "ng-model='settings.token' "
-                . "required "
+                . "ng-model='settings.token' ng-hide='true'" 
                 . "ng-initial "
                 . "id='keymedia_token' name='keymedia_settings[keymedia_token]' "
                 . "type='text' "
                 . "value='{$this->options['keymedia_token']}' />";
-        echo '<input type="button" ng-click="getToken()" value="Get token" />';
     }
 
-    public function isEmpty() {
-        return
-                empty($this->options['keymedia_host']) ||
-                empty($this->options['keymedia_username']) ||
-                empty($this->options['keymedia_token']);
+    public function canConnect() {
+        $client = new KeymediaClient($this->options['keymedia_username'], $this->options['keymedia_host'], $this->options['keymedia_token']);
+        return $client->isConnected();
     }
 
     public function purge() {

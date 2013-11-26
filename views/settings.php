@@ -3,16 +3,19 @@
         <h2>
             <?php echo __('KeyMedia integration settings'); ?>
         </h2>
-        <p ng-hide="connection">
-            <?php echo __('Cannot connect to KeyMedia. Check your credentials.'); ?>
-        </p> 
-        <form name="keymedia_settings" method="post" action="options.php" ng-submit="removePassword()">
+        <div class="error" ng-hide="connection || !settings.token">
+            <p><?php echo __('Cannot connect to KeyMedia with current settings'); ?></p>
+        </div> 
+        <div class="updated" ng-show="connection && keymedia_settings.$pristine">
+            <p><?php echo __('Current settings are correct'); ?></p>
+        </div> 
+        <form id="keymedia_settings" name="keymedia_settings" method="post" action="options.php" ng-submit="removePassword()">
             <p>
                 <?php settings_fields('keymedia_settings'); ?>
                 <?php do_settings_sections('keymedia_settings'); ?>
             </p>
             <p>
-                <input ng-disabled="!keymedia_settings.$valid || !connection" id="save_keymedia_options" class="button button-primary" type="submit" name="Submit" value="<?php esc_attr_e('Save changes') ?>" />
+                <input ng-click="submit()" id="save_keymedia_options" class="button button-primary" type="button" name="Submit" value="<?php esc_attr_e('Connect to KeyMedia') ?>" />
             </p>
         </form>
     </div>

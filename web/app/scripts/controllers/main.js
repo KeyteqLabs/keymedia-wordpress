@@ -103,7 +103,30 @@ angular.module('keymediaApp')
 	angular.forEach($scope.media, function(v, k) {
 	    if(v.selected) { 
 	      if(v.isImage) { 
-		html += '<img src="' + v.file.url + '" />'
+		html += '<img src="' + v.file.url + '" />';
+	      } else {
+		html += '<a href="'+v.file.url+'"><img src="'+v.thumbnailUrl+'" /></a>'; 
+	      }
+	    }
+	});
+	win.send_to_editor(html);
+      };
+      
+      $scope.attachResponsive = function() {
+        var win = window.dialogArguments || opener || parent || top;
+        var imgSrc = $scope.details.file.url;
+	var html = '';
+	
+	angular.forEach($scope.media, function(v, k) {
+	    if(v.selected) { 
+	      if(v.isImage) { 
+                html += '<span data-picture>\n';
+                html += '  <span data-src="'+v.thumbnailUrl+'">&nbsp;</span>\n';
+                html += '  <span data-src="'+v.file.url+'" data-media="(min-width:1000px)">&nbsp;</span>\n';
+                html += '  <noscript>\n';
+                html += '    <img src="'+v.file.url+'" />\n';
+                html += '  </noscript>\n';
+                html += '</span>\n';
 	      } else {
 		html += '<a href="'+v.file.url+'"><img src="'+v.thumbnailUrl+'" /></a>'; 
 	      }
